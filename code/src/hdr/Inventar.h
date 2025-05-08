@@ -1,4 +1,9 @@
+#ifndef GUARD
+#define GUARD
+
 #include <iostream>
+
+
 using namespace std;
 
 void pridejPredmet(string inventar[], int &pocet) {
@@ -120,18 +125,13 @@ void vypisInventar(string inventar[], int pocet) {
     cout << "\n-----------------------------------------";
 }
 
-int main() {
-    string inventar[10];
+void start_inventar(int zivoty, int utok, string inventar[10]) {
     int vyber;
-    int zivoty = 100;
-    int utok = 10;
     int obsazene_mista = 0;
-
-    cout << "\t\t(U vyberu pis cislo)\n\n";
 
     while (vyber != 5) {
         cout << "\nInventar:\t\t\tZivoty - " << zivoty << "   Utok - " << utok;
-        cout << "\n\n\n  1 - Pridat Predmet\n";
+        cout << "\n\n\t\t(U vyberu pis cislo)\n\n  1 - Pridat Predmet\n";
         cout << "  2 - Odebrat Predmet\n";
         cout << "  3 - Pouzit Predmet\n";
         cout << "  4 - Zobrazit inventar\n";
@@ -160,3 +160,6 @@ int main() {
         }
     }
 }
+
+
+#endif // GUARD
