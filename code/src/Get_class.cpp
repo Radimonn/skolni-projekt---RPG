@@ -5,36 +5,46 @@
 using namespace std;
 
 
-int main() {
+string jmeno_hrac;
+string inventar[10];
+string schopnosti[3][4];
+string classa;
+int input;
 
-    string jmeno_hrac;
-    string inventar[10];
-    string schopnosti[3][4];
-    string classa = " ";
-    int input;
+int zivoty;
+int energie;
+int utok;
+int mana;
+int zlato;
 
-    int zivoty;
-    int energie;
-    int utok;
-    int mana;
-    int zlato;
+int zivoty_copy;
+int energie_copy;
+int mana_copy;
+
+void Get_class() {
 
     cout << "Napis tve jmeno: ";
-    cin >> jmeno_hrac;
+    getline(cin, jmeno_hrac);
 
     do {
         cout << "\n\nCim se zabyvas (Class): ";
         cout << "\n\n1 - Carodej\n2 - Bojovnik\n3 - Zlodej\n4 - Bezdomovec";
         cout << "\n\nOdpoved: ";
-        cin >> classa;
+        cin >> input;
 
-        transform(classa.begin(), classa.end(), classa.begin(), ::tolower);
+        if (cin.fail()) {
 
-        if (classa.find("carodej") != string::npos) {input = 1;}
-        else if (classa.find("bojovnik") != string::npos) {input = 2;}
-        else if (classa.find("zlodej") != string::npos)  {input = 3;}
-        else if (classa.find("bezdomovec") != string::npos) {input = 4;}
-        else {int input = 0;}
+            cin.clear();
+            cin.ignore();
+
+            input = 100;
+
+        }
+
+        if (input == 1) {classa = "carodej";}
+        if (input == 2) {classa = "bojovnik";}
+        if (input == 3)  {classa = "zlodej";}
+        if (input == 4) {classa = "bezdomovec";}
 
         switch (input) {
 
@@ -44,7 +54,7 @@ int main() {
             zivoty = 80;
             energie = 30;
             utok = 5;
-            mana = 40;
+            mana = 60;
             zlato = 70;
 
             schopnosti[0][0] = "Ohniva strela";
@@ -152,26 +162,10 @@ int main() {
 
     } while (input < 1 || input > 4);
 
-    cout << "\n" << jmeno_hrac << "\n";
-    cout << "\n" << classa << "\n";
-    cout << "\n" << zivoty << "\n";
-    cout << "\n" << utok << "\n";
-    cout << "\n" << energie << "\n";
-    cout << "\n" << mana << "\n";
-    cout << "\n" << zlato << "\n";
-    cout << "\n";
 
-    for (int i=0; i<3; i++) {
-        for (int j=0; j<4; j++) {
-
-            cout << schopnosti[i][j] << ", ";
-
-
-        }
-        cout << endl;
-
-
-    }
+    zivoty_copy = zivoty;
+    energie_copy = energie;
+    mana_copy = mana;
 
 
 }
