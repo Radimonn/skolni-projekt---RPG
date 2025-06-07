@@ -11,6 +11,8 @@ void draw_battle(int zivot, int energie, int mana, string jmeno);
 void player_attack(string (schopnosti)[3][4], string jmeno);
 int get_enemy_state();
 void enemy_attack();
+void Dopredu(int pohyb[]);
+void Dozadu(int pohyb[]);
 
 // Promenny
 extern string jmeno_hrac;
@@ -28,6 +30,7 @@ extern int zlato;
 extern int zivoty_copy;
 extern int energie_copy;
 extern int mana_copy;
+extern int pohyb[19];
 
 
 

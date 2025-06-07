@@ -10,7 +10,20 @@ int main() {
 
     Get_class();
 
-    Zacit_Bitvu('G', 1);
+    while(true) {
+        for (int i = 0; i < 19; i++) {
+
+            cout << pohyb[i];
+
+
+        }
+        Dozadu(pohyb);
+        cout << endl;
+
+        Sleep(5000);
+    }
+
+/*  Zacit_Bitvu('G', 1);
     system("cls");
 
     while(true) {
@@ -59,7 +72,7 @@ int main() {
         system("cls");
 
 
-    }
+    }   */
 
 
 

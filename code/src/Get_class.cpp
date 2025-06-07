@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+int pohyb[19] = {0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 string jmeno_hrac;
 string inventar[10];
 string schopnosti[3][4];

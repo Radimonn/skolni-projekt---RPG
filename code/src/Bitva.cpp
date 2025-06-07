@@ -245,8 +245,12 @@ void enemy_attack() {
             enemy_mana = mana_formula_enemy;
 
             energie -= stoi(enemy_schopnost[2][0]);
-        } else {cout << "|  " <<enemy_jmeno << " se pokusi pouzit schopnost ale nema na ni manu nebo energii.\n|\n";}
 
+        } else {
+            cout << "|\n| " << enemy_jmeno << " se k tobe priblizi a zautoci\n|\n";
+
+            zivoty -= rand() % enemy_utok + 1;
+        }
     } else {
 
         cout << "|\n| " << enemy_jmeno << " se k tobe priblizi a zautoci\n|\n";
