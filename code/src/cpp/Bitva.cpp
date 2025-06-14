@@ -162,6 +162,58 @@ void Zacit_Bitvu(char enemy, int NumberOfEnemy) {
         break;
     }
 
+    case 'K':
+    {
+//    K = Kral Goblinu -- Les / jenom jeden
+
+        enemy_jmeno = "Kral skretu";
+        enemy_zivot = number_of_enemy * 90;
+        enemy_utok = 6;
+        enemy_mana = 80;
+        enemy_energie = 90;
+
+        enemy_schopnost[0][0] = "Kral skretu bouchne pesti do zeme a zatrese s ni";
+        enemy_schopnost[0][1] = "Kral skretu po tobe hodi obrovsky balvan";
+        enemy_schopnost[1][0] = "Utok-Nasili";
+        enemy_schopnost[1][1] = "Utok-Magie";
+        enemy_schopnost[2][0] = "6";
+        enemy_schopnost[2][1] = "8";
+
+        break;
+    }
+
+    case 'D':
+    {
+//    D = Vladce Dusi -- Hrbitov / big boss dusi
+
+        enemy_jmeno = "Vladce Dusi";
+        enemy_zivot = number_of_enemy * 110;
+        enemy_utok = 7;
+        enemy_mana = 90;
+        enemy_energie = 80;
+
+        enemy_schopnost[0][0] = "Vladce Dusi Vypusti skupinu dusi ktery te zrani";
+        enemy_schopnost[0][1] = "Vladce Dusi zatrese zemi";
+        enemy_schopnost[1][0] = "Utok-Magie";
+        enemy_schopnost[1][1] = "Utok-Nasili";
+        enemy_schopnost[2][0] = "10";
+        enemy_schopnost[2][1] = "9";
+
+        break;
+    }
+
+    case 'B':
+    {
+//    B = Big boss Cutalot -- Chram / upnej konec
+
+        enemy_jmeno = "Cutalot";
+        enemy_zivot = number_of_enemy * 50;
+        enemy_utok = 12;
+        enemy_mana = 200;
+        enemy_energie = 200;
+
+        break;
+    }
 
 
     }
@@ -411,6 +463,46 @@ void player_attack(string (schopnosti)[3][4], string jmeno) {
 
         enemy_zivot -= rand() % utok + 1;
 
+
+
+    }
+
+    cout << "--------------------------------------------------------------------------------------------------------";
+    Sleep(2000);
+
+}
+
+void Cutalot_attack(bool lichy, int kola) {
+
+    if (kola == 10) {
+
+        cout << "|\n|   Cutalot Utoci obema rukama naraz\n|\n";
+
+        zivoty -= zivoty / 2;
+
+
+
+
+    } else if (lichy) {
+
+        cout << "|\n|   Cutalot Utoci levou rukou";
+
+        zivoty -= 1 + (kola * 2);
+
+        cout << "\n|\n|   Cutalot se leci\n|\n";
+
+        enemy_zivot += (2 + (kola * 2)) / 6;
+
+
+    } else {
+
+        cout << "|\n|   Cutalot Utoci pravou rukou";
+
+        zivoty -= 2 + (kola * 2);
+
+        cout << "\n|\n|   Cutalot se leci\n|\n";
+
+        enemy_zivot += (2 + (kola * 2)) / 4;
 
 
     }

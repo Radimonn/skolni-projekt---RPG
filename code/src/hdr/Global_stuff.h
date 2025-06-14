@@ -9,6 +9,8 @@ void draw_battle(int zivot, int energie, int mana, std::string jmeno);
 void player_attack(std::string (schopnosti)[3][4], std::string jmeno);
 int get_enemy_state();
 void enemy_attack();
+void Cutalot_attack(bool lichy, int kola);
+
 void Dopredu(int (&pohyb)[]);
 void Dozadu(int (&pohyb)[]);
 void Vesnice1();
