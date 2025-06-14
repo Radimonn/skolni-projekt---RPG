@@ -1,79 +1,1307 @@
 #include <iostream>
 #include <ctime>
 #include <windows.h>
+#include <algorithm>
+#include <string>
 
 #include "hdr\Global_stuff.h"
 
+using namespace std;
 
 
 int main() {
 
+    int smer = 0;
+
+    int xtra_glod;
+
+    bool big_boss = true;
+
+    bool temp_e0 = true;
+    bool temp_e1 = true;
+    bool temp_e2 = true;
+    bool temp_e3 = true;
+    bool temp_e4 = true;
+    bool temp_e5 = true;
+    bool temp_e6 = true;
+    bool temp_e7 = true;
+    bool temp_e8 = true;
+    bool temp_e9 = true;
+    bool temp_e10 = true;
+    bool temp_e11 = true;
+    bool temp_e12 = true;
+    bool temp_e13 = true;
+    bool temp_e14 = true;
+    bool temp_e15 = true;
+
     Get_class();
 
-    while(true) {
-        for (int i = 0; i < 19; i++) {
+    cout << "\nPrave jsi ve vesnici Knick Gurr a docetl ses ze by jsi se mohl stat jeden z strazcu krale. ";
 
-            cout << pohyb[i];
+    Sleep(5000);
+
+    while (big_boss == true) {
 
 
+        if (les_check() && pohyb[0] != 1) {
+
+            if (pohyb[1] == 1 && temp_e0) {
+
+                Zacit_Bitvu('G', 3);
+                system("cls");
+
+                while(true) {
+
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    player_attack(schopnosti, jmeno_hrac);
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU               |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI               |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+                    system("cls");
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    enemy_attack();
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU               |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI               |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+             }
+
+             temp_e0 = false;
+
+             if (zivoty <= 0) {
+
+                cout << "\n\t\t\t\tAle bohuzel jsi umrel...";
+                return 0;
+
+
+             }
         }
-        Dozadu(pohyb);
-        cout << endl;
 
-        Sleep(5000);
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+            cout << "\n\nObrazek lesa\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tJsi v lese kudy pujdes?\n|\n";
+            cout << "|\t1 - Jit zpet\n|\t2 - Hloubeji do lesa\n|\t3 - inventar\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    smer = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (smer < 1 || smer > 3) {
+
+                    smer = 0;
+
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+
+
+            } while (smer < 1 || smer > 3);
+
+                cout << "--------------------------------------------------------------------------------------";
+                Sleep(5000);
+                system("cls");
+
+                if (smer == 1) {
+                    Dopredu(pohyb);
+
+                } else if (smer == 2) {
+                    Dozadu(pohyb);
+
+
+                } else if (smer == 3) {
+
+                    start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                smer = 0;
+
+                }
+            } else if (pohyb[0] == 1) {
+
+
+                cout << "\n   ______________________________-----------___________________________________________________________   \n";
+                cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+                cout << "                                 -----------\n";
+
+                cout << "\n\nObrazek lesa\n\n\n\n";
+
+                cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+                cout << "|\tDosels jsi dost daleko. Nebylo by lepsi kdyby jsi sel za kralem?\n|\n";
+                cout << "|\t1 - Jit zpet\n|\t2 - inventar\n";
+                cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+                do {
+
+                    cout << "|  >>>  ";
+                    cin >> smer;
+
+                    if (cin.fail()) {
+
+                        cin.clear();
+                        cin.ignore();
+
+                    smer = 0;
+
+                        cout << "|\n|   Asi jsi se preklepl\n|\n";
+                    } else if (smer < 1 || smer > 3) {
+
+                        smer = 0;
+
+
+                        cout << "| Asi jsi se preklepl\n|\n";
+
+                    }
+
+
+
+                } while (smer < 1 || smer > 3);
+
+                    cout << "--------------------------------------------------------------------------------------";
+                    Sleep(5000);
+                    system("cls");
+
+                    if (smer == 1) {
+                        Dopredu(pohyb);
+
+
+                    } else if (smer == 2) {
+
+                        start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                    smer = 0;
+
+                    }
+
+
+            } else if (pohyb[3] == 1) {
+
+                Vesnice1();
+
+
+            } else if (predhrad_check()) {
+
+                system("cls");
+
+            if (pohyb[4] == 1 && temp_e1) {
+
+                Zacit_Bitvu('Z', 1);
+                system("cls");
+
+                while(true) {
+
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    player_attack(schopnosti, jmeno_hrac);
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU               |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI               |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+                    system("cls");
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    enemy_attack();
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU               |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI               |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+             }
+
+             temp_e1 = false;
+
+             if (zivoty <= 0) {
+
+                cout << "\n\t\t\t\tAle bohuzel jsi umrel...";
+                Sleep(3000);
+                return 0;
+
+
+             }
+        } if (pohyb[6] == 1 && temp_e2) {
+
+                Zacit_Bitvu('F', 1);
+                system("cls");
+
+                while(true) {
+
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    player_attack(schopnosti, jmeno_hrac);
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU                |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI                  |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+                    system("cls");
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    enemy_attack();
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU                |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI                  |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+             }
+
+             temp_e2 = false;
+
+             if (zivoty <= 0) {
+
+                cout << "\n\t\t\t\tAle bohuzel jsi umrel...";
+                Sleep(3000);
+                return 0;
+
+
+             }
+        }
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+            cout << "\n\nObrazek hradu na hore\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tJsi pred hradem, kam pujdes?\n|\n";
+            cout << "|\t1 - Pokracovat v ceste k hradu\n|\t2 - Jit zpet\n|\t3 - inventar\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    smer = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (smer < 1 || smer > 3) {
+
+                    smer = 0;
+
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+
+
+            } while (smer < 1 || smer > 3);
+
+                cout << "--------------------------------------------------------------------------------------";
+                Sleep(5000);
+                system("cls");
+
+                if (smer == 1) {
+                    Dopredu(pohyb);
+
+                } else if (smer == 2) {
+                    Dozadu(pohyb);
+
+
+                } else if (smer == 3) {
+
+                    start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                smer = 0;
+
+                }
+
+            } else if (hrad_check()) {
+
+
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+            cout << "\n\nObrazek velke brany\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tDosel jsi do podhradi\n|\n";
+            cout << "|\t1 - Jit do vesnice hradu\n|\t2 - Jit zpet\n|\t3 - inventar\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    smer = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (smer < 1 || smer > 3) {
+
+                    smer = 0;
+
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+
+
+            } while (smer < 1 || smer > 3);
+
+                cout << "--------------------------------------------------------------------------------------";
+                Sleep(5000);
+                system("cls");
+
+                if (smer == 1) {
+                    Dopredu(pohyb);
+
+                } else if (smer == 2) {
+                    Dozadu(pohyb);
+
+
+                } else if (smer == 3) {
+
+                    start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                smer = 0;
+
+                }
+
+            } else if (pohyb[8] == 1) {
+
+                Vesnice2();
+
+            } else if (kral_check()) {
+
+
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+            cout << "\n\nObrazek konverzace s kralem\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tKral ma pro tebe ukol, pry se mas svest vytahem ze skaly a pomoct mu zabit zleho Cutalota\n|\n";
+            cout << "|\t1 - Tak jo teda\n|\t2 - Ne, jdu zpatky\n|\t3 - inventar\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    smer = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (smer < 1 || smer > 3) {
+
+                    smer = 0;
+
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+            } while (smer < 1 || smer > 3);
+
+                cout << "--------------------------------------------------------------------------------------";
+                Sleep(5000);
+                system("cls");
+
+                if (smer == 1) {
+                    Dopredu(pohyb);
+
+                } else if (smer == 2) {
+                    Dozadu(pohyb);
+
+
+                } else if (smer == 3) {
+
+                    start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                smer = 0;
+
+                }
+
+                cout << "\n   ______________________________-----------___________________________________________________________   \n";
+                cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+                cout << "                                 -----------\n";
+
+                cout << "\n\nObrazek Koukani se ze skaly dolu\n\n\n\n";
+
+                cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+                cout << "|\tKral te privede k vytahu a spusti te dolu\n";
+                cout << "|\tKdyz, ale jedes dolu tak zjistis ze lano se trha\n";
+                cout << "|\tA lano se pretrhlo kdyz si prijel dolu, cesta zpet uz neni";
+                cout << "\n|\n--------------------------------------------------------------------------------------\n\n\n";
+
+                system("pause");
+
+
+            } else if (pohyb[10] == 1) {
+
+            if (pohyb[10] == 1 && temp_e3) {
+
+                Zacit_Bitvu('N', 1);
+                system("cls");
+
+                while(true) {
+
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    player_attack(schopnosti, jmeno_hrac);
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU               |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI               |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+                    system("cls");
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    enemy_attack();
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU               |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI               |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+             }
+
+             temp_e3 = false;
+
+             if (zivoty <= 0) {
+
+                cout << "\n\t\t\t\tAle bohuzel jsi umrel...";
+                return 0;
+
+
+             }
+        }
+
+
+
+                cout << "\n   ______________________________-----------___________________________________________________________   \n";
+                cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+                cout << "                                 -----------\n";
+
+                cout << "\n\nObrazek skladky\n\n\n\n";
+
+                cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+                cout << "|\tVidis kolem sebe ruiny a smeti. Je tu fakt bordel a zpatky to nepujde\n|\n";
+                cout << "|\t1 - Jit dal\n|\t2 - inventar\n";
+                cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+                do {
+
+                    cout << "|  >>>  ";
+                    cin >> smer;
+
+                    if (cin.fail()) {
+
+                        cin.clear();
+                        cin.ignore();
+
+                    smer = 0;
+
+                        cout << "|\n|   Asi jsi se preklepl\n|\n";
+                    } else if (smer < 1 || smer > 3) {
+
+                        smer = 0;
+
+
+                        cout << "| Asi jsi se preklepl\n|\n";
+
+                    }
+
+
+
+                } while (smer < 1 || smer > 3);
+
+                    cout << "--------------------------------------------------------------------------------------";
+                    Sleep(5000);
+                    system("cls");
+
+                    if (smer == 1) {
+                        Dopredu(pohyb);
+
+
+                    } else if (smer == 2) {
+
+                        start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                    smer = 0;
+
+                    }
+
+
+            } else if (skala_check() && pohyb[11] == 1 ) {
+
+
+
+
+            if (pohyb[11] == 1 && temp_e4) {
+
+                Zacit_Bitvu('P', 3);
+                system("cls");
+
+                while(true) {
+
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    player_attack(schopnosti, jmeno_hrac);
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU                |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI                  |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+                    system("cls");
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    enemy_attack();
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU                |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI                  |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+             }
+
+             temp_e4 = false;
+
+             if (zivoty <= 0) {
+
+                cout << "\n\t\t\t\tAle bohuzel jsi umrel...";
+                Sleep(3000);
+                return 0;
+
+
+             }
+        }
+
+
+
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+            cout << "\n\nObrazek ruin a smeti\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tJdes dal mezi ruiny a smetim?\n|\n";
+            cout << "|\t1 - Jit dal\n|\t2 - Jit o kousek zpatky z neznameho duvodu\n|\t3 - inventar\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    smer = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (smer < 1 || smer > 3) {
+
+                    smer = 0;
+
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+
+
+            } while (smer < 1 || smer > 3);
+
+                cout << "--------------------------------------------------------------------------------------";
+                Sleep(5000);
+                system("cls");
+
+                if (smer == 1) {
+                    Dopredu(pohyb);
+
+                } else if (smer == 2) {
+                    Dozadu(pohyb);
+
+
+                } else if (smer == 3) {
+
+                    start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                smer = 0;
+
+                }
+
+            } else if (pohyb[12] == 1) {
+
+
+
+            if (pohyb[12] == 1 && temp_e5) {
+
+                Zacit_Bitvu('P', 3);
+                system("cls");
+
+                while(true) {
+
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    player_attack(schopnosti, jmeno_hrac);
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU                |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI                  |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+                    system("cls");
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    enemy_attack();
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU                |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI                  |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+             }
+
+             temp_e5 = false;
+
+             if (zivoty <= 0) {
+
+                cout << "\n\t\t\t\tAle bohuzel jsi umrel...";
+                Sleep(3000);
+                return 0;
+
+
+             }
+        }
+
+
+
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+            cout << "\n\nObrazek Vesnice v dalce, vypada desive\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tPujdes bliz?\n|\n";
+            cout << "|\t1 - Jit do Vesnice\n|\t2 - Otocit se a prohlidnout si ruiny|\t3 - inventar\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    smer = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (smer < 1 || smer > 3) {
+
+                    smer = 0;
+
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+
+
+            } while (smer < 1 || smer > 3);
+
+                cout << "--------------------------------------------------------------------------------------";
+                Sleep(5000);
+                system("cls");
+
+                if (smer == 1) {
+                    Dopredu(pohyb);
+
+                } else if (smer == 2) {
+                    Dozadu(pohyb);
+
+
+                } else if (smer == 3) {
+
+                    start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                smer = 0;
+
+                }
+
+
+            } else if (pohyb[13] == 1) {
+
+                Vesnice3();
+
+            } else if (hrbitov_check() && pohyb[16] != 1) {
+
+
+
+            if (pohyb[14] == 1 && temp_e6) {
+
+                Zacit_Bitvu('O', 2);
+                system("cls");
+
+                while(true) {
+
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    player_attack(schopnosti, jmeno_hrac);
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU                |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI                  |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+                    system("cls");
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    enemy_attack();
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU                |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI                  |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+             }
+
+             temp_e6 = false;
+
+             if (zivoty <= 0) {
+
+                cout << "\n\t\t\t\tAle bohuzel jsi umrel...";
+                Sleep(3000);
+                return 0;
+
+
+             }
+            } else if (pohyb[15] == 1 && temp_e7) {
+
+                Zacit_Bitvu('V', 2);
+                system("cls");
+
+                while(true) {
+
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    player_attack(schopnosti, jmeno_hrac);
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU                |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI                  |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+                    system("cls");
+
+                    draw_battle(zivoty , energie, mana, jmeno_hrac);
+
+                    enemy_attack();
+
+                    if (get_enemy_state() == 69) {
+
+                        xtra_glod = rand() % (100 - 50 + 1);
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU                |\n\t\t\t-----------------------------------------------------\n\n\t\t\t\t\t\t\t\t[ + " << xtra_glod + 50 << " zlata ]\n\n\n\n";
+                        zlato = zlato + xtra_glod + 50;
+                        Sleep(2000);
+                        break;
+
+                    } else if (get_enemy_state() == 420) {
+
+                        system("cls");
+                        cout << "\t\t\t_____________________________________________________\n\t\t\t|             TVA CESTA ZDE KONCI                  |\n\t\t\t-----------------------------------------------------";
+                        Sleep(5000);
+                        return 0;
+                    }
+
+             }
+
+             temp_e7 = false;
+
+             if (zivoty <= 0) {
+
+                cout << "\n\t\t\t\tAle bohuzel jsi umrel...";
+                Sleep(3000);
+                return 0;
+
+
+             }
+
+
+
+            }
+
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+            cout << "\n\nObrazek zbytku vesnice\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tProchazis tichou vesnici je to jako kdyby tam nikdo nezil.\n|\n";
+            cout << "|\t1 - Pokracovat\n|\t2 - Jit zpet|\t3 - inventar\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    smer = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (smer < 1 || smer > 3) {
+
+                    smer = 0;
+
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+
+
+            } while (smer < 1 || smer > 3);
+
+                cout << "--------------------------------------------------------------------------------------";
+                Sleep(5000);
+                system("cls");
+
+                if (smer == 1) {
+                    Dopredu(pohyb);
+
+                } else if (smer == 2) {
+                    Dozadu(pohyb);
+
+
+                } else if (smer == 3) {
+
+                    start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                smer = 0;
+
+                }
+
+            } else if (hrbitov_check() && pohyb[16] == 1) {
+
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+            cout << "\n\nObrazek hrbitova\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tJsi na hrbitove. (*Desivy*)\n|\n";
+            cout << "|\t1 - Jit k chramu\n|\t2 - Jit zpet do vesnice|\t3 - inventar\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    smer = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (smer < 1 || smer > 3) {
+
+                    smer = 0;
+
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+
+
+            } while (smer < 1 || smer > 3);
+
+                cout << "--------------------------------------------------------------------------------------";
+                Sleep(5000);
+                system("cls");
+
+                if (smer == 1) {
+                    Dopredu(pohyb);
+
+                } else if (smer == 2) {
+                    Dozadu(pohyb);
+
+
+                } else if (smer == 3) {
+
+                    start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                smer = 0;
+
+                }
+
+            } else if (predchram_check()) {
+
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+            cout << "\n\nObrazek hrbitova\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tStojis pred chramem, Cutalot je asi uvnitr. Pujdes dovnitr?\n|\n";
+            cout << "|\t1 - Jit do chramu\n|\t2 - Jit na hrbitov|\t3 - inventar\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    smer = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (smer < 1 || smer > 3) {
+
+                    smer = 0;
+
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+
+
+            } while (smer < 1 || smer > 3);
+
+                cout << "--------------------------------------------------------------------------------------";
+                Sleep(5000);
+                system("cls");
+
+                if (smer == 1) {
+                    Dopredu(pohyb);
+
+                } else if (smer == 2) {
+                    Dozadu(pohyb);
+
+
+                } else if (smer == 3) {
+
+                    start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+
+                smer = 0;
+
+                }
+            } else if (chram_check()) {
+
+
+
+
+
+
+            } else {
+
+                system("cls");
+                cout << "\n\n\t\tKde si myslis ze ses?\n\n";
+                system("pause");
+                return 1;
+
+
+            }
+
+
     }
-
-/*  Zacit_Bitvu('G', 1);
-    system("cls");
-
-    while(true) {
-
-
-        draw_battle(zivoty , energie, mana, jmeno_hrac);
-
-        player_attack(schopnosti, jmeno_hrac);
-
-        if (get_enemy_state() == 69) {
-
-            system("cls");
-            cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU               |\n\t\t\t-----------------------------------------------------";
-            Sleep(2000);
-            break;
-
-        } else if (get_enemy_state() == 420) {
-
-            system("cls");
-            cout << "\t\t\t_____________________________________________________\n\t\t\t|             PROHRAL JSI TUTO BITVU               |\n\t\t\t-----------------------------------------------------";
-            Sleep(2000);
-            break;
-        }
-
-        system("cls");
-
-        draw_battle(zivoty , energie, mana, jmeno_hrac);
-
-        enemy_attack();
-
-        if (get_enemy_state() == 69) {
-
-            system("cls");
-            cout << "\t\t\t_____________________________________________________\n\t\t\t|              VYHRAL JSI TUTO BITVU               |\n\t\t\t-----------------------------------------------------";
-            Sleep(2000);
-            break;
-
-        } else if (get_enemy_state() == 420) {
-
-            system("cls");
-            cout << "\t\t\t_____________________________________________________\n\t\t\t|             PROHRAL JSI TUTO BITVU               |\n\t\t\t-----------------------------------------------------";
-            Sleep(2000);
-            break;
-        }
-
-        system("cls");
-
-
-    }   */
-
-
 
 }

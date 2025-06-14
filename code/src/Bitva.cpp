@@ -1,16 +1,14 @@
-#include <iostream>
-#include <random>
 #include <windows.h>
 
-#include "hdr\Global_stuff.h"
+#include "hdr/Global_stuff.h"
 
 using namespace std;
-
 
 string enemy_schopnost[3][2];
 string enemy_jmeno;
 
 int enemy_zivot;
+int enemy_zivot_copy;
 int enemy_utok;
 int enemy_mana;
 int enemy_energie;
@@ -29,7 +27,7 @@ void Zacit_Bitvu(char enemy, int NumberOfEnemy) {
 //    G = goblin -- les / vetsinou po dvou
 
         enemy_jmeno = "Skret";
-        enemy_zivot = 30;
+        enemy_zivot = number_of_enemy * 30;
         enemy_utok = 3;
         enemy_mana = 10;
         enemy_energie = 50;
@@ -49,7 +47,7 @@ void Zacit_Bitvu(char enemy, int NumberOfEnemy) {
 //    F = falesny bojovnik -- pred hradem / vetsinou po jednom
 
         enemy_jmeno = "Falesny bojovnik";
-        enemy_zivot = 60;
+        enemy_zivot = number_of_enemy * 60;
         enemy_utok = 5;
         enemy_mana = 20;
         enemy_energie = 40;
@@ -69,7 +67,7 @@ void Zacit_Bitvu(char enemy, int NumberOfEnemy) {
 //    Z = zly obcan vesnice -- pred hradem / vetsinou po jednom
 
         enemy_jmeno = "Zly obcan vesnice";
-        enemy_zivot = 50;
+        enemy_zivot = number_of_enemy * 50;
         enemy_utok = 4;
         enemy_mana = 10;
         enemy_energie = 50;
@@ -89,7 +87,7 @@ void Zacit_Bitvu(char enemy, int NumberOfEnemy) {
 //    P = prerostly brouk -- za hradem / vetsinou po trech
 
         enemy_jmeno = "Prerostly brouk";
-        enemy_zivot = 20;
+        enemy_zivot = number_of_enemy * 20;
         enemy_utok = 2;
         enemy_mana = 30;
         enemy_energie = 60;
@@ -109,7 +107,7 @@ void Zacit_Bitvu(char enemy, int NumberOfEnemy) {
 //    N = nemrtvy valecnik -- za hradem / vetsinou po jednom
 
         enemy_jmeno = "Nemrtvy valecnik";
-        enemy_zivot = 60;
+        enemy_zivot = number_of_enemy * 60;
         enemy_utok = 4;
         enemy_mana = 50;
         enemy_energie = 30;
@@ -129,7 +127,7 @@ void Zacit_Bitvu(char enemy, int NumberOfEnemy) {
 //    O = obcan vesnice bez duse -- divna daleka vesnice / vetsinou po jednom
 
         enemy_jmeno = "Obcan vesnice bez duse";
-        enemy_zivot = 50;
+        enemy_zivot = number_of_enemy * 50;
         enemy_utok = 3;
         enemy_mana = 70;
         enemy_energie = 40;
@@ -149,7 +147,7 @@ void Zacit_Bitvu(char enemy, int NumberOfEnemy) {
 //    V = Volna duse -- divna daleka vesnice / vetsinou po dvou
 
         enemy_jmeno = "Volna duse";
-        enemy_zivot = 30;
+        enemy_zivot = number_of_enemy * 30;
         enemy_utok = 4;
         enemy_mana = 50;
         enemy_energie = 50;
@@ -168,11 +166,15 @@ void Zacit_Bitvu(char enemy, int NumberOfEnemy) {
 
     }
 
+    enemy_zivot_copy = enemy_zivot;
+
 }
 
 void enemy_attack() {
 
     int j;
+
+    int p = 0;
 
     int mana_formula_enemy = stoi(enemy_schopnost[2][j]) * 2 - stoi(enemy_schopnost[2][j]) / 3;
 
@@ -180,6 +182,12 @@ void enemy_attack() {
 
 
     int random = rand() % 2;
+
+
+
+do {
+
+    random = rand() % 2;
 
     if (rand() % 2 == 1) {
 
@@ -258,6 +266,14 @@ void enemy_attack() {
         zivoty -= rand() % enemy_utok + 1;
     }
 
+    p++;
+
+} while (p < number_of_enemy);
+
+    if (enemy_zivot <= enemy_zivot_copy / number_of_enemy && number_of_enemy > 1) {number_of_enemy--;} else if (enemy_zivot <= 0) {number_of_enemy = 0; enemy_zivot = 0;}
+
+    p = 0;
+
     cout << "-------------------------------------------------------------------------------------------------------";
     Sleep(2000);
 
@@ -279,7 +295,7 @@ void draw_battle(int zivot, int energie, int mana, string jmeno) {
     cout << " ___________________ \n";
     cout << "  " << jmeno << "\n";
     cout << "|   zivot: " << zivot << "       |\t\t\t\t\t\t\t\t   ____________________\n";
-    cout << "|   mana : " << mana << "        |\t\t\t\t\t\t\t\t   " << enemy_jmeno << "|  " << enemy_zivot << "  |\n";
+    cout << "|   mana : " << mana << "        |\t\t\t\t\t\t\t\t"<< number_of_enemy << "x  " << enemy_jmeno << "|  " << enemy_zivot << "  |\n";
     cout << "|   energie: " << energie << "      |\t\t\t\t\t\t\t\t   --------------------\n---------------------------__/";
     cout << "\n\n_______________________________________________________________________________________________________\n";
 
@@ -377,7 +393,7 @@ void player_attack(string (schopnosti)[3][4], string jmeno) {
 
             utok += stoi(schopnosti[2][i]);
 
-            enemy_utok -= stoi(schopnosti[2][i]);
+            mana -= mana_formula;
 
         } else if (schopnosti[1][i] == "+Zlato-Magie"&& mana >= mana_formula) {
 
@@ -406,7 +422,7 @@ void player_attack(string (schopnosti)[3][4], string jmeno) {
 
 int get_enemy_state() {
 
-    if (enemy_zivot <= 0) {
+    if (number_of_enemy <= 0) {
 
         return 69;
 

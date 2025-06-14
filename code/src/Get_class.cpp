@@ -1,12 +1,10 @@
 #include <iostream>
-#include <algorithm>
-#include <string>
 
 using namespace std;
 
 int pohyb[19] = {0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 string jmeno_hrac;
-string inventar[10];
+string Inventar[10];
 string schopnosti[3][4];
 string classa;
 int input;
@@ -43,7 +41,7 @@ void Get_class() {
 
         if (input == 1) {classa = "carodej";}
         if (input == 2) {classa = "bojovnik";}
-        if (input == 3)  {classa = "zlodej";}
+        if (input == 3) {classa = "zlodej";}
         if (input == 4) {classa = "bezdomovec";}
 
         switch (input) {
@@ -83,9 +81,9 @@ void Get_class() {
             mana = 5;
             zlato = 90;
 
-            schopnosti[0][0] = "Bodnuti mecem";
-            schopnosti[0][1] = "Seknuti sekerou";
-            schopnosti[0][2] = "Hod sekerou";
+            schopnosti[0][0] = "Pest";
+            schopnosti[0][1] = "Mocny dupnuti";
+            schopnosti[0][2] = "Hod kamenem";
             schopnosti[0][3] = "Barbarsky pokrik";
 
             schopnosti[1][0] = "Utok-Nasili";

@@ -2,23 +2,38 @@
 #define GLOBAL
 #include <iostream>
 
-using namespace std;
-
 // Funkce
 void Get_class();
 void Zacit_Bitvu(char enemy, int NumberOfEnemy);
-void draw_battle(int zivot, int energie, int mana, string jmeno);
-void player_attack(string (schopnosti)[3][4], string jmeno);
+void draw_battle(int zivot, int energie, int mana, std::string jmeno);
+void player_attack(std::string (schopnosti)[3][4], std::string jmeno);
 int get_enemy_state();
 void enemy_attack();
-void Dopredu(int pohyb[]);
-void Dozadu(int pohyb[]);
+void Dopredu(int (&pohyb)[]);
+void Dozadu(int (&pohyb)[]);
+void Vesnice1();
+void Vesnice2();
+void Vesnice3();
+void pouzijPredmet(int &pocet, int &zivoty, int &utok);
+void vypisInventar(int pocet);
+void start_inventar(int &zlato, int &mana, int &energie, int &zivoty, int &utok);
+
+bool les_check();
+bool predhrad_check();
+bool hrad_check();
+bool kral_check();
+bool skala_check();
+bool hrbitov_check();
+bool predchram_check();
+bool chram_check();
+
+
 
 // Promenny
-extern string jmeno_hrac;
-extern string inventar[10];
-extern string schopnosti[3][4];
-extern string classa;
+extern std::string jmeno_hrac;
+extern std::string Inventar[10];
+extern std::string schopnosti[3][4];
+extern std::string classa;
 
 extern int input;
 extern int zivoty;
@@ -31,6 +46,8 @@ extern int zivoty_copy;
 extern int energie_copy;
 extern int mana_copy;
 extern int pohyb[19];
+extern int obsazene_mista;
+extern int place_index;
 
 
 

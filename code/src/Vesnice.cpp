@@ -1,25 +1,1033 @@
+#include <windows.h>
+
 #include "hdr/Global_stuff.h"
+
+using namespace std;
 
 void Vesnice1() {
 
+    int vyber;
+    int smer_vesnic = 0;
+    int u = 0;
+
+
+    while (vyber != 6) {
+
+
+    system("cls");
+
+    cout << "\n   ______________________________-----------___________________________________________________________   \n";
+    cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+    cout << "                                 -----------\n";
+
+    cout << "\n\nObrazek vesnice na planine\n\n\n\n";
+
+    cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+    cout << "|\tJsi ve vesnici Knick Gurr. Co tady budes delat..\n|\n";
+    cout << "|\t1 - Hospoda\n";
+    cout << "|\t2 - Nocleharna\n";
+    cout << "|\t3 - Obchod\n";
+    cout << "|\t4 - Kouzelnik\n";
+    cout << "|\t5 - Inventar\n";
+    cout << "|\t6 - Odejit\n";
+    cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+    do {
+
+        cout << "|  >>>  ";
+        cin >> vyber;
+
+        if (cin.fail()) {
+
+            cin.clear();
+            cin.ignore();
+
+            vyber = 0;
+
+            cout << "|\n|   Asi jsi se preklepl\n|\n";
+        } else if (vyber < 1 || vyber > 6) {
+
+            vyber = 0;
+            cout << "| Asi jsi se preklepl\n|\n";
+
+        }
+
+    } while (vyber < 1 || vyber > 6);
+
+
+    switch (vyber) {
+
+        case 1:
+
+            cout << "|\n|\n|\tVydas se do Hospody..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 2) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tVitej v hospode. Das si jedno pivo? ( Prida ti zivoty )\n|\n";
+            cout << "|\t1 - Ano dam             ( 20 zlata )\n";
+            cout << "|\t2 - odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 2);
+
+            switch (vyber) {
+                case 1:
+
+                    if (zlato >= 20) {
+                        zlato -= 20;
+
+                        if (zivoty != zivoty_copy) {
+
+                            zivoty += zivoty_copy - zivoty;
+
+                        } else {
+
+                            cout << "|\n|    Po tomhle pivu jsi uz necitil zadne zlepseni zivotu";
+                            Sleep(3000);
+
+                        }
+
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 2:
+
+                    cout << "|\n|   Tak jo.";
+                    break;
+                default:
+                    cout << "|\n|   Prestan!";
+
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+            }
+            vyber = 0;
+            system("cls");
+
+            break;
+
+
+        case 2:
+
+            cout << "|\n|\n|\tVydas se do Nocleharny..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 2) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tVitej v Nocleharne, chces se tady vyspat a dopnit si energii?\n|\n";
+            cout << "|\t1 - Ano chci             ( 40 zlata )\n";
+            cout << "|\t2 - odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 2);
+
+            switch (vyber) {
+                case 1:
+
+                    if (zlato >= 40) {
+                        zlato -= 40;
+
+                        if (energie != energie_copy) {
+
+                            energie += energie_copy - energie;
+
+                        } else {
+
+                            zlato += 40;
+                            cout << "|\n|    Mas energie dost a nedokazal by jsi usnout";
+                            Sleep(3000);
+
+                        }
+
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 2:
+
+                    cout << "|\n|   Tak jo.";
+                    break;
+                default:
+                    cout << "|\n|   Prestan!";
+
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+            }
+            vyber = 0;
+            system("cls");
+
+            break;
+        case 3:
+
+            cout << "|\n|\n|\tVydas se do Obchodu..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 4) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tVitej v obchode Knick Gurru, co si koupis?\n|\n";
+            cout << "|\t1 - lekarna              (  50 zlata )\n";
+            cout << "|\t2 - elixir               ( 110 zlata )\n";
+            cout << "|\t3 - tajemny svitek       (  60 zlata )\n";
+            cout << "|\t4 - Odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 6);
+
+            switch (vyber) {
+
+                case 1:
+                    if (zlato >= 50) {
+
+                        zlato -= 50;
+
+                        while (Inventar[u].empty() == 0) {
+                            u++;
+                        }
+
+                        Inventar[u] = "lekarna";
+                        u = 0;
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+
+                    }
+
+                    break;
+                case 2:
+                    if (zlato >= 110) {
+                        zlato -= 110;
+
+                        while (Inventar[u].empty() == 0) {
+                            u++;
+                        }
+
+                        Inventar[u] = "elixir";
+                        u = 0;
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 3:
+                    if (zlato >= 60) {
+                        zlato -= 60;
+
+                        while (Inventar[u].empty() == 0) {
+                            u++;
+                        }
+
+                        Inventar[u] = "tajemny svitek";
+                        u = 0;
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 4:
+                    cout << "|\n|      Odchazis z obchodu";
+                    Sleep(3000);
+
+                    break;
+                default:
+
+                    cout << "|\n|\n  O co se snazis?";
+                    Sleep(3000);
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+
+            }
+
+            vyber = 0;
+            system("cls");
+
+            break;
+        case 4:
+
+            cout << "|\n|\n|\tVydas se k Kouzelnikovi..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 2) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tVitej u Kouzelnika, chces aby ti doplnil manu?\n|\n";
+            cout << "|\t1 - Ano chci             ( 60 zlata )\n";
+            cout << "|\t2 - odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 2);
+
+            switch (vyber) {
+                case 1:
+
+                    if (zlato >= 60) {
+                        zlato -= 60;
+
+                        if (mana != mana_copy) {
+
+                            mana += mana_copy - mana;
+
+                        } else {
+
+                            zlato += 60;
+                            cout << "|\n|    Mas many dost vic nepotrebujes";
+                            Sleep(3000);
+
+                        }
+
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 2:
+
+                    cout << "|\n|   Tak jo.";
+                    break;
+                default:
+                    cout << "|\n|   Prestan!";
+
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+            }
+            vyber = 0;
+            system("cls");
+
+            break;
+        case 5:
+
+            cout << "|\n|\n|\tZacnes se hrabat ve svych vecech..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+            break;
+        case 6:
+
+            cout << "|\n|\n|\tJdes pryc od vesnice..\n|\n";
+            cout << "|     Ale jakym smerem?\n|\n|   1 - Vpred na Sever          2 - Vzad na Jih\n|\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer_vesnic;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+
+
+                } if (smer_vesnic < 1 || smer_vesnic > 2) {
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (smer_vesnic < 1 || smer_vesnic > 2);
+
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            if (smer_vesnic == 1) {
+
+                Dopredu(pohyb);
+
+
+            } else {Dozadu(pohyb);}
+
+            break;
+        default:
+            cout << "Jak?? A proc??";
+
+    }
 
 
 
-
-
-
-
+    }
+    vyber = 0;
 
 
 }
 
 void Vesnice2() {
 
+    int vyber;
+    int smer_vesnic = 0;
+    int u = 0;
+
+
+    while (vyber != 6) {
+
+
+    system("cls");
+
+    cout << "\n   ______________________________-----------___________________________________________________________   \n";
+    cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+    cout << "                                 -----------\n";
+
+    cout << "\n\nObrazek hradni vesnice\n\n\n\n";
+
+    cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+    cout << "|\tJsi ve vesnici na hrade. Co tady budes delat..\n|\n";
+    cout << "|\t1 - Hospoda\n";
+    cout << "|\t2 - Nocleharna\n";
+    cout << "|\t3 - Obchod\n";
+    cout << "|\t4 - Kouzelnik\n";
+    cout << "|\t5 - Inventar\n";
+    cout << "|\t6 - Odejit\n";
+    cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+    do {
+
+        cout << "|  >>>  ";
+        cin >> vyber;
+
+        if (cin.fail()) {
+
+            cin.clear();
+            cin.ignore();
+
+            vyber = 0;
+
+            cout << "|\n|   Asi jsi se preklepl\n|\n";
+        } else if (vyber < 1 || vyber > 6) {
+
+            vyber = 0;
+            cout << "| Asi jsi se preklepl\n|\n";
+
+        }
+
+    } while (vyber < 1 || vyber > 6);
+
+
+    switch (vyber) {
+
+        case 1:
+
+            cout << "|\n|\n|\tVydas se do Hospody..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 2) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tVitej v hospode. Das si jedno pivo?\n|\n";
+            cout << "|\t1 - Ano dam             ( 25 zlata )\n";
+            cout << "|\t2 - odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 2);
+
+            switch (vyber) {
+                case 1:
+
+                    if (zlato >= 25) {
+                        zlato -= 25;
+
+                        if (zivoty != zivoty_copy) {
+
+                            zivoty += zivoty_copy - zivoty;
+
+                        } else {
+
+                            cout << "|\n|    Po tomhle pivu jsi uz necitil zadne zlepseni zivotu";
+                            Sleep(3000);
+
+                        }
+
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 2:
+
+                    cout << "|\n|   Tak jo.";
+                    break;
+                default:
+                    cout << "|\n|   Prestan!";
+
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+            }
+            vyber = 0;
+            system("cls");
+
+            break;
+
+
+        case 2:
+
+            cout << "|\n|\n|\tVydas se do Nocleharny..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 2) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tVitej v Nocleharne, chces se tady vyspat?\n|\n";
+            cout << "|\t1 - Ano chci             ( 37 zlata )\n";
+            cout << "|\t2 - odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 2);
+
+            switch (vyber) {
+                case 1:
+
+                    if (zlato >= 37) {
+                        zlato -= 37;
+
+                        if (energie != energie_copy) {
+
+                            energie += energie_copy - energie;
+
+                        } else {
+
+                            zlato += 40;
+                            cout << "|\n|    Mas energie dost a nedokazal by jsi usnout";
+                            Sleep(3000);
+
+                        }
+
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 2:
+
+                    cout << "|\n|   Tak jo.";
+                    break;
+                default:
+                    cout << "|\n|   Prestan!";
+
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+            }
+            vyber = 0;
+            system("cls");
+
+            break;
+        case 3:
+
+            cout << "|\n|\n|\tVydas se do Obchodu..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 4) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tVitej v obchode Knick Gurru, co si koupis?\n|\n";
+            cout << "|\t1 - lekarna              (  40 zlata )\n";
+            cout << "|\t2 - elixir               ( 100 zlata )\n";
+            cout << "|\t3 - tajemny svitek       (  70 zlata )\n";
+            cout << "|\t4 - Odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 6);
+
+            switch (vyber) {
+
+                case 1:
+                    if (zlato >= 40) {
+
+                        zlato -= 40;
+
+                        while (Inventar[u].empty() == 0) {
+                            u++;
+                        }
+
+                        Inventar[u] = "lekarna";
+                        u = 0;
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+
+                    }
+
+                    break;
+                case 2:
+                    if (zlato >= 100) {
+                        zlato -= 100;
+
+                        while (Inventar[u].empty() == 0) {
+                            u++;
+                        }
+
+                        Inventar[u] = "elixir";
+                        u = 0;
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 3:
+                    if (zlato >= 70) {
+                        zlato -= 70;
+
+                        while (Inventar[u].empty() == 0) {
+                            u++;
+                        }
+
+                        Inventar[u] = "tajemny svitek";
+                        u = 0;
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 4:
+                    cout << "|\n|      Odchazis z obchodu";
+                    Sleep(3000);
+
+                    break;
+                default:
+
+                    cout << "|\n|\n  O co se snazis?";
+                    Sleep(3000);
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+
+            }
+
+            vyber = 0;
+            system("cls");
+
+            break;
+        case 4:
+
+            cout << "|\n|\n|\tVydas se k Kouzelnikovi..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 2) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tVitej u Kouzelnika, chces aby ti doplnil manu?\n|\n";
+            cout << "|\t1 - Ano chci             ( 60 zlata )\n";
+            cout << "|\t2 - odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 2);
+
+            switch (vyber) {
+                case 1:
+
+                    if (zlato >= 60) {
+                        zlato -= 60;
+
+                        if (mana != mana_copy) {
+
+                            mana += mana_copy - mana;
+
+                        } else {
+
+                            zlato += 60;
+                            cout << "|\n|    Mas many dost vic nepotrebujes";
+                            Sleep(3000);
+
+                        }
+
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 2:
+
+                    cout << "|\n|   Tak jo.";
+                    break;
+                default:
+                    cout << "|\n|   Prestan!";
+
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+            }
+            vyber = 0;
+            system("cls");
+
+            break;
+        case 5:
+
+            cout << "|\n|\n|\tZacnes se hrabat ve svych vecech..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+            break;
+        case 6:
+
+            cout << "|\n|\n|\tJdes pryc od vesnice..\n|\n";
+            cout << "|     Ale jakym smerem?\n|\n|   1 - Vpred skrz Hrad          2 - Zpatky pred Vesnici\n|\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer_vesnic;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+
+
+                } if (smer_vesnic < 1 || smer_vesnic > 2) {
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (smer_vesnic < 1 || smer_vesnic > 2);
+
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            if (smer_vesnic == 1) {
+
+                Dopredu(pohyb);
+
+
+            } else {Dozadu(pohyb);}
+
+            break;
+        default:
+            cout << "Jak?? A proc??";
+
+    }
 
 
 
-
-
+    }
+    vyber = 0;
 
 
 
@@ -28,8 +1036,514 @@ void Vesnice2() {
 void Vesnice3() {
 
 
+    int vyber;
+    int smer_vesnic = 0;
+    int u = 0;
 
 
+    while (vyber != 6) {
+
+
+    system("cls");
+
+    cout << "\n   ______________________________-----------___________________________________________________________   \n";
+    cout << "|--______________________________   CESTA   ___________________________________________________________--|\n";
+    cout << "                                 -----------\n";
+
+    cout << "\n\nObrazek vesnice na planine\n\n\n\n";
+
+    cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+    cout << "|\tJsi v ty Vesnici, ale neco je tu divny. Co tady budes delat?\n|\n";
+    cout << "|\t1 - Hospoda\n";
+    cout << "|\t2 - Nocleharna\n";
+    cout << "|\t3 - Obchod\n";
+    cout << "|\t4 - Kouzelnik\n";
+    cout << "|\t5 - Inventar\n";
+    cout << "|\t6 - Odejit\n";
+    cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+    do {
+
+        cout << "|  >>>  ";
+        cin >> vyber;
+
+        if (cin.fail()) {
+
+            cin.clear();
+            cin.ignore();
+
+            vyber = 0;
+
+            cout << "|\n|   Asi jsi se preklepl\n|\n";
+        } else if (vyber < 1 || vyber > 6) {
+
+            vyber = 0;
+            cout << "| Asi jsi se preklepl\n|\n";
+
+        }
+
+    } while (vyber < 1 || vyber > 6);
+
+
+    switch (vyber) {
+
+        case 1:
+
+            cout << "|\n|\n|\tVydas se do Hospody..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 2) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tNikdo tu neni, ale muzes si dat pivo. ( A nechas jim tam trochu zlata, protoze jsi dobry clovek, ze ano? )\n|\n";
+            cout << "|\t1 - Dam si            ( 15 zlata )\n";
+            cout << "|\t2 - odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 2);
+
+            switch (vyber) {
+                case 1:
+
+                    if (zlato >= 15) {
+                        zlato -= 15;
+
+                        if (zivoty != zivoty_copy) {
+
+                            zivoty += zivoty_copy - zivoty;
+
+                        } else {
+
+                            cout << "|\n|    Po tomhle pivu jsi uz necitil zadne zlepseni zivotu";
+                            Sleep(3000);
+
+                        }
+
+                    } else {
+
+                        cout << "|\n|     Nebudes prece jen tak krast!";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 2:
+
+                    cout << "|\n|   Tak jo.";
+                    break;
+                default:
+                    cout << "|\n|   Prestan!";
+
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+            }
+            vyber = 0;
+            system("cls");
+
+            break;
+
+
+        case 2:
+
+            cout << "|\n|\n|\tVydas se do Nocleharny..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 2) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tV nocleharne vidis nekolik lidi jak lezi na zemi a ani se nehnou. Pospis tady? ( A nechas jim tam trochu zlata, protoze jsi dobry clovek, ze ano? )\n|\n";
+            cout << "|\t1 - Ano pospim             ( 35 zlata )\n";
+            cout << "|\t2 - odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 2);
+
+            switch (vyber) {
+                case 1:
+
+                    if (zlato >= 35) {
+                        zlato -= 35;
+
+                        if (energie != energie_copy) {
+
+                            energie += energie_copy - energie;
+
+                        } else {
+
+                            zlato += 35;
+                            cout << "|\n|    Mas energie dost a nedokazal by jsi usnout";
+                            Sleep(3000);
+
+                        }
+
+                    } else {
+
+                        cout << "|\n|     Nebudes prece jen tak krast!";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 2:
+
+                    cout << "|\n|   Tak jo.";
+                    break;
+                default:
+                    cout << "|\n|   Prestan!";
+
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+            }
+            vyber = 0;
+            system("cls");
+
+            break;
+        case 3:
+
+            cout << "|\n|\n|\tVydas se do Obchodu..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 4) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tObchodnik se ani nehne, ale tise rika: Za to zaplatis. ( Asi bys mel )\n|\n";
+            cout << "|\t1 - lekarna              (  60 zlata )\n";
+            cout << "|\t2 - elixir               (  90 zlata )\n";
+            cout << "|\t3 - tajemny svitek       (  30 zlata )\n";
+            cout << "|\t4 - Odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 6);
+
+            switch (vyber) {
+
+                case 1:
+                    if (zlato >= 60) {
+
+                        zlato -= 60;
+
+                        while (Inventar[u].empty() == 0) {
+                            u++;
+                        }
+
+                        Inventar[u] = "lekarna";
+                        u = 0;
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+
+                    }
+
+                    break;
+                case 2:
+                    if (zlato >= 90) {
+                        zlato -= 90;
+
+                        while (Inventar[u].empty() == 0) {
+                            u++;
+                        }
+
+                        Inventar[u] = "elixir";
+                        u = 0;
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 3:
+                    if (zlato >= 30) {
+                        zlato -= 30;
+
+                        while (Inventar[u].empty() == 0) {
+                            u++;
+                        }
+
+                        Inventar[u] = "tajemny svitek";
+                        u = 0;
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 4:
+                    cout << "|\n|      Odchazis z obchodu";
+                    Sleep(3000);
+
+                    break;
+                default:
+
+                    cout << "|\n|\n  O co se snazis?";
+                    Sleep(3000);
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+
+            }
+
+            vyber = 0;
+            system("cls");
+
+            break;
+        case 4:
+
+            cout << "|\n|\n|\tVydas se k Kouzelnikovi..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            while (vyber != 2) {
+
+            cout << "\n   ______________________________-----------___________________________________________________________   \n";
+            cout << "|--______________________________  OBCHOD   ___________________________________________________________--|\n";
+            cout << "                                 -----------\n";
+
+
+            cout << "\n\nObrazek v budoucnu\n\n\n\n";
+
+            cout << "( zlato - " << zlato << "       Zivoty - " << zivoty << "        Mana - " << mana << "       Energie - " << energie << ") _____________________________________________\n|\n";
+            cout << "|\tPred tebou je jen nejaky lektvar. Nechas tady 50 zlata a napit se?\n|\n";
+            cout << "|\t1 - Ano             ( 50 zlata )\n";
+            cout << "|\t2 - odejit\n";
+            cout << "|\n|\t\tOdpoved (cislo prosim)\n";
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> vyber;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+
+                    vyber = 0;
+
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+                } else if (vyber < 1 || vyber > 6) {
+
+                    vyber = 0;
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (vyber < 1 || vyber > 2);
+
+            switch (vyber) {
+                case 1:
+
+                    if (zlato >= 50 && mana < mana_copy) {
+                        zlato -= 50;
+
+                        if (mana != mana_copy) {
+
+                            mana += mana_copy - mana;
+
+                        } else {
+
+                            zlato += 50;
+                            cout << "|\n|    Mas many dost vic nepotrebujes";
+                            Sleep(3000);
+
+                        }
+
+                    } else {
+
+                        cout << "|\n|     Prijd zpatky az budes o neco, Hmm, bohatsii..";
+                        Sleep(3000);
+
+                    }
+
+                    break;
+                case 2:
+
+                    cout << "|\n|   Tak jo.";
+                    break;
+                default:
+                    cout << "|\n|   Prestan!";
+
+            }
+
+            if (zlato < 0) {zlato = 0;}
+            system("cls");
+            }
+            vyber = 0;
+            system("cls");
+
+            break;
+        case 5:
+
+            cout << "|\n|\n|\tZacnes se hrabat ve svych vecech..\n|\n";
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            vyber = 0;
+
+            start_inventar(zlato, mana, energie, zivoty, utok);
+
+
+            break;
+        case 6:
+
+            cout << "|\n|\n|\tJdes pryc od vesnice..\n|\n";
+            cout << "|     Ale jakym smerem?\n|\n|   1 - Jit pres hrbitov k Cutalotovi          2 - Jit zpatky\n|\n";
+
+
+            do {
+
+                cout << "|  >>>  ";
+                cin >> smer_vesnic;
+
+                if (cin.fail()) {
+
+                    cin.clear();
+                    cin.ignore();
+                    cout << "|\n|   Asi jsi se preklepl\n|\n";
+
+
+                } if (smer_vesnic < 1 || smer_vesnic > 2) {
+
+                    cout << "| Asi jsi se preklepl\n|\n";
+
+                }
+
+            } while (smer_vesnic < 1 || smer_vesnic > 2);
+
+
+            cout << "--------------------------------------------------------------------------------------";
+            Sleep(5000);
+            system("cls");
+
+            if (smer_vesnic == 1) {
+
+                Dopredu(pohyb);
+
+
+            } else {Dozadu(pohyb);}
+
+            break;
+        default:
+            cout << "Jak?? A proc??";
+
+    }
+
+
+
+    }
+    vyber = 0;
 
 
 
