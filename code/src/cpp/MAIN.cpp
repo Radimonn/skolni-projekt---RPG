@@ -38,7 +38,7 @@ int main() {
 
     Sleep(5000);
 
-/**
+
     while (big_boss == true) {
 
 
@@ -1418,7 +1418,7 @@ int main() {
                 smer = 0;
 
                 }
-            } else if (chram_check()) {   **/
+            } else if (chram_check()) {
 
 
                 Zacit_Bitvu('B', 1);
@@ -1480,7 +1480,7 @@ int main() {
 
 
 
-/**         } else {
+            } else {
 
                 system("cls");
                 cout << "\n\n\t\tKde si myslis ze ses?\n\n";
@@ -1491,6 +1491,6 @@ int main() {
             }
 
 
-    } */
+    }
 
 }
